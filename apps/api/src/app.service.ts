@@ -1,21 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { frameworkName, timestamp } from '@framework/core';
-import { HealthResponse, ApiInfo } from '@framework/shared-types';
+import { frameworkName, createSuccessResponse, ApiResponse } from '@framework/core';
+import { ApiInfo } from '@framework/shared-types';
+import { AppConfigService } from './config/app-config.service';
 
 @Injectable()
 export class AppService {
-  getHealth(): HealthResponse {
-    return {
-      status: 'ok',
-      version: process.env.APP_VERSION || '0.0.1',
-      timestamp: timestamp(),
-    };
-  }
+  constructor(private readonly config: AppConfigService) {}
 
-  getInfo(): ApiInfo {
-    return {
+  getInfo(): ApiResponse<ApiInfo> {
+    return createSuccessResponse<ApiInfo>({
       name: frameworkName,
-      description: 'NestJS API skeleton prepared for financial-grade services',
-    };
+      description: `NestJS API skeleton prepared for financial-grade services (env: ${this.config.env})`,
+    });
   }
 }

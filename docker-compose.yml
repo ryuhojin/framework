@@ -22,6 +22,10 @@ services:
       - ./.env.local
       - ./apps/api/.env.local
     environment:
+      APP_ENV: ${APP_ENV:-local}
+      NODE_ENV: ${NODE_ENV:-development}
+      DB_VENDOR: ${DB_VENDOR:-postgres}
+      DB_DISABLE: ${DB_DISABLE:-false}
       DB_HOST: db
     ports:
       - "3000:3000"

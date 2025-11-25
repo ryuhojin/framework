@@ -4,6 +4,14 @@
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
   "transform": {
-    "^.+\\.(t|j)s$": "ts-jest"
+    "^.+\\.ts$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^@framework/core$": "<rootDir>/../../../packages/core/src",
+    "^@framework/core/(.*)$": "<rootDir>/../../../packages/core/src/$1",
+    "^@framework/config$": "<rootDir>/../../../packages/config/src",
+    "^@framework/config/(.*)$": "<rootDir>/../../../packages/config/src/$1",
+    "^@framework/shared-types$": "<rootDir>/../../../packages/shared-types/src",
+    "^@framework/shared-types/(.*)$": "<rootDir>/../../../packages/shared-types/src/$1"
   }
 }

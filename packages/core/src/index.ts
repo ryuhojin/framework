@@ -12,3 +12,34 @@ export const resolveAppEnv = (value?: string): AppEnv => {
 export const isProd = (value?: string): boolean => resolveAppEnv(value) === 'prod';
 
 export const timestamp = (): string => new Date().toISOString();
+
+export interface ApiError {
+  code: string;
+  message: string;
+  detail?: unknown;
+}
+
+export interface ApiResponse<T> {
+  success: boolean;
+  data?: T;
+  error?: ApiError;
+  timestamp: string;
+  requestId?: string;
+}
+
+export const createSuccessResponse = <T>(data: T, requestId?: string): ApiResponse<T> => ({
+  success: true,
+  data,
+  timestamp: timestamp(),
+  requestId,
+});
+
+export const createErrorResponse = (
+  error: ApiError,
+  requestId?: string,
+): ApiResponse<null> => ({
+  success: false,
+  error,
+  timestamp: timestamp(),
+  requestId,
+});

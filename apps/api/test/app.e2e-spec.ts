@@ -1,3 +1,6 @@
+process.env.DB_DISABLE = 'true';
+process.env.APP_ENV = 'local';
+
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
@@ -15,13 +18,14 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('/ (GET health)', () => {
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
       .expect((res) => {
-        expect(res.body.status).toBe('ok');
-        expect(res.body.timestamp).toBeDefined();
+        expect(res.body.success).toBe(true);
+        expect(res.body.data.status).toBeDefined();
+        expect(res.body.data.db).toBe('disabled');
       });
   });
 
@@ -30,8 +34,9 @@ describe('AppController (e2e)', () => {
       .get('/info')
       .expect(200)
       .expect((res) => {
-        expect(res.body.name).toBeDefined();
-        expect(res.body.description).toBeDefined();
+        expect(res.body.success).toBe(true);
+        expect(res.body.data.name).toBeDefined();
+        expect(res.body.data.description).toBeDefined();
       });
   });
 });

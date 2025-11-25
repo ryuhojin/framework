@@ -1,7 +1,9 @@
 export interface HealthResponse {
-  status: 'ok';
+  status: 'ok' | 'degraded';
   version: string;
   timestamp: string;
+  env: string;
+  db: 'up' | 'down' | 'disabled';
 }
 
 export interface ApiInfo {
