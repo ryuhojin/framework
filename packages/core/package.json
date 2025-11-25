@@ -1,0 +1,12 @@
+{
+  "name": "@framework/core",
+  "version": "0.0.1",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "description": "Reusable core helpers for the framework monorepo",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  }
+}

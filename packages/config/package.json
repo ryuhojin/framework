@@ -1,0 +1,15 @@
+{
+  "name": "@framework/config",
+  "version": "0.0.1",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "description": "Environment-centric configuration helpers",
+  "dependencies": {
+    "@framework/core": "0.0.1"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  }
+}

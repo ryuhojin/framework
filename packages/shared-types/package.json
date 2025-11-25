@@ -1,0 +1,12 @@
+{
+  "name": "@framework/shared-types",
+  "version": "0.0.1",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "description": "Shared DTOs and contracts across services",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  }
+}

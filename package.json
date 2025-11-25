@@ -1,0 +1,19 @@
+{
+  "name": "framework-monorepo",
+  "private": true,
+  "packageManager": "yarn@1.22.22",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "yarn install",
+    "dev:api": "yarn workspace api start:dev",
+    "dev:web": "yarn workspace web dev",
+    "offline:mirror": "yarn config set yarn-offline-mirror ./yarn-offline-cache && yarn config set yarn-offline-mirror-pruning true",
+    "docker:up": "docker compose up --build",
+    "lint": "yarn workspaces run lint",
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test"
+  }
+}
