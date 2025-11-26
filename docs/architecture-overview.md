@@ -26,6 +26,7 @@
 - **DB**: `apps/api/src/database` TypeORM 모듈, PostgreSQL 기본 구현(다른 벤더는 TODO).
 - **Exception/Logging**: 글로벌 예외 필터 + HTTP 로깅 인터셉터 + 보안 헤더(helmet) + CORS.
 - **Health**: `/health`에서 버전/환경/DB 상태를 공통 응답 포맷으로 반환.
+- **Auth/RBAC(Chapter 3)**: JWT 기반 로그인, 권한 데코레이터/가드, 메뉴/역할/퍼미션 CRUD, local/dev Seed(admin 계정/권한) 제공.
 
 ## 서비스 확장 로드맵(개략)
 1. **보안**: HTTPS/TLS 종료, HSTS/CSP 고도화.

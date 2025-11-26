@@ -10,3 +10,8 @@ export interface ApiInfo {
   name: string;
   description: string;
 }
+
+export interface AuthTokenResponse {
+  accessToken: string;
+  expiresIn: string;
+}

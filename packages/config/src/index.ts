@@ -27,6 +27,9 @@ export interface SecurityConfig {
   enableHelmet: boolean;
   cspEnabled: boolean;
   logLevel: 'debug' | 'info' | 'warn' | 'error';
+  jwtSecret: string;
+  jwtExpiresIn: string;
+  bcryptSaltOrRounds: number;
 }
 
 export interface AppConfig {
@@ -129,6 +132,9 @@ export const loadConfig = (options: LoadConfigOptions = {}): AppConfig => {
       enableHelmet: parseBool(env.ENABLE_HELMET, true),
       cspEnabled: parseBool(env.CSP_ENABLED, false),
       logLevel: (env.LOG_LEVEL as SecurityConfig['logLevel']) || logLevelDefaults[envName],
+      jwtSecret: env.JWT_SECRET || 'change_me_in_prod',
+      jwtExpiresIn: env.JWT_EXPIRES_IN || (envName === 'prod' ? '15m' : '1h'),
+      bcryptSaltOrRounds: Number(env.BCRYPT_SALT_OR_ROUNDS || 10),
     },
   };
 };

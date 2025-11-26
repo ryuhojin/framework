@@ -10,6 +10,7 @@
 - packages/shared-types: 공통 DTO
 - docs: 설계/운영 문서
 - yarn-offline-cache: Yarn 오프라인 미러
+- auth/rbac: JWT 로그인(`/auth/login`), 권한 가드/데코레이터, admin용 메뉴/역할/퍼미션 CRUD, local/dev Seed(admin/admin123!)
 
 ## 설치/오프라인
 온라인:

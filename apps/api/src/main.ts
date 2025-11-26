@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 import { AppConfigService } from './config/app-config.service';
 import { ApiExceptionFilter } from './common/filters/api-exception.filter';
 import { HttpLoggingInterceptor } from './common/interceptors/http-logging.interceptor';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
@@ -28,6 +29,13 @@ async function bootstrap() {
 
   app.useGlobalFilters(new ApiExceptionFilter(config));
   app.useGlobalInterceptors(new HttpLoggingInterceptor());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+      forbidUnknownValues: false,
+    }),
+  );
 
   await app.listen(config.app.port, config.app.host);
 }
